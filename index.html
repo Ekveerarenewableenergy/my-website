@@ -294,6 +294,7 @@
             .nav-links { display: none; }
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -393,17 +394,21 @@
     <section id="contact" class="section-padding grid-2">
         <div class="contact-form reveal">
             <h3 style="font-size: 2rem; margin-bottom: 20px;">Get a Quote</h3>
-            <form action="https://formsubmit.co/ekveerarenewableenergy@gmail.com" method="POST">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <select>
-                    <option>Residential Project</option>
-                    <option>Commercial/Industrial</option>
-                    <option>Maintenance Request</option>
-                </select>
-                <textarea rows="4" placeholder="Your requirements..."></textarea>
-                <button type="submit" class="btn-submit">SEND MESSAGE</button>
-            </form>
+            <form id="quote-form">
+               <input type="text" name="user_name" placeholder="Full Name" required>
+
+               <input type="email" name="user_email" placeholder="Email Address" required>
+
+               <select name="project">
+                 <option>Residential Project</option>
+                 <option>Commercial/Industrial</option>
+                 <option>Maintenance Request</option>
+               </select>
+
+<textarea name="message" rows="4" placeholder="Your requirements..."></textarea>
+
+<button type="submit" class="btn-submit">SEND MESSAGE</button>
+</form>
         </div>
         <div class="contact-info">
             <h2 class="reveal">Visit Our <span style="color:var(--brand)">Hub</span></h2>
@@ -554,5 +559,26 @@ box-shadow:0 4px 8px rgba(0,0,0,0.2);
 z-index:1000;">
 💬 Chat with us
 </a>
+    <script>
+(function(){
+emailjs.init("_iLiJYLsXOm0M5Mm2");
+})();
+
+document.getElementById("quote-form")
+.addEventListener("submit", function(e) {
+e.preventDefault();
+
+emailjs.sendForm(
+"service_hvgzoqu",
+"template_pmqxxod",
+this
+).then(function() {
+alert("Message sent successfully!");
+}, function(error) {
+alert("Failed to send message");
+});
+
+});
+</script>
 </body>
 </html>
