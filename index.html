@@ -595,28 +595,31 @@ document.getElementById("quote-form")
     e.preventDefault();
 
     // Check reCAPTCHA
-    let captchaResponse = grecaptcha.getResponse();
+    const recaptchaResponse = grecaptcha.getResponse();
 
-    if (captchaResponse.length === 0) {
+    if (recaptchaResponse.length === 0) {
         alert("Please verify that you are not a robot.");
         return;
     }
 
+    // Send EmailJS form
     emailjs.sendForm(
         "service_hvgzoqu",
         "template_pmqxxod",
         this
-    ).then(function () {
+    )
+    .then(function () {
 
         alert("Message sent successfully!");
 
         document.getElementById("quote-form").reset();
         grecaptcha.reset();
 
-    }, function (error) {
+    })
+    .catch(function (error) {
 
+        console.error("EmailJS Error:", error);
         alert("Failed to send message");
-        console.log(error);
 
     });
 
