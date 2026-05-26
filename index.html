@@ -406,14 +406,14 @@
 
         <form id="quote-form">
 
-            <input type="text" 
-                   name="user_name" 
-                   placeholder="Full Name" 
+            <input type="text"
+                   name="user_name"
+                   placeholder="Full Name"
                    required>
 
-            <input type="text" 
-                   name="user_mobile" 
-                   placeholder="Mobile Number" 
+            <input type="text"
+                   name="user_mobile"
+                   placeholder="Mobile Number"
                    required>
 
             <select name="project">
@@ -422,14 +422,13 @@
                 <option>Maintenance Request</option>
             </select>
 
-            <div class="g-recaptcha" 
+            <textarea name="message"
+                      rows="4"
+                      placeholder="Your requirements..."></textarea>
+
+            <div class="g-recaptcha"
                  data-sitekey="6LeX4_0sAAAAADGCvb3b2CTMCfnVMLBpeCK0CgOh">
             </div>
-
-            <textarea name="message" 
-                      rows="4" 
-                      placeholder="Your requirements...">
-            </textarea>
 
             <button type="submit" class="btn-submit">
                 SEND MESSAGE
@@ -438,11 +437,6 @@
         </form>
     </div>
 </section>
-
-<textarea name="message" rows="4" placeholder="Your requirements..."></textarea>
-
-<button type="submit" class="btn-submit">SEND MESSAGE</button>
-</form>
         </div>
         <div class="contact-info">
             <h2 class="reveal">Visit Our <span style="color:var(--brand)">Hub</span></h2>
