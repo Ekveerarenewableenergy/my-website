@@ -4,6 +4,7 @@
     <meta name="google-site-verification" content="JvPAD2zU0RtIrv3W4c8S-rTzYLXwFEdwfjzvsBCJgv4" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Ekveera Renewable Energy Vadodara | #1 Solar Company in Gujarat</title>
     <link rel="icon" href="https://ekveerarenewableenergy.com/Ekveera.png">
     <link rel="apple-touch-icon" href="Ekveera.png">
@@ -404,6 +405,7 @@
                 <option>Commercial/Industrial</option>
                 <option>Maintenance Request</option>
             </select>
+            <div class="g-recaptcha" data-sitekey="6LeX4_0sAAAAADGCvb3b2CTMCfnVMLBpeCK0CgOh"></div>
         </form>
     </div>
 </section>
@@ -562,24 +564,41 @@ box-shadow:0 4px 8px rgba(0,0,0,0.2);
 z-index:1000;">
 💬 Chat with us
 </a>
-    <script>
-(function(){
-emailjs.init("_iLiJYLsXOm0M5Mm2");
+   <script>
+(function () {
+    emailjs.init("_iLiJYLsXOm0M5Mm2");
 })();
 
 document.getElementById("quote-form")
-.addEventListener("submit", function(e) {
-e.preventDefault();
+.addEventListener("submit", function (e) {
 
-emailjs.sendForm(
-"service_hvgzoqu",
-"template_pmqxxod",
-this
-).then(function() {
-alert("Message sent successfully!");
-}, function(error) {
-alert("Failed to send message");
-});
+    e.preventDefault();
+
+    // Check reCAPTCHA
+    let captchaResponse = grecaptcha.getResponse();
+
+    if (captchaResponse.length === 0) {
+        alert("Please verify that you are not a robot.");
+        return;
+    }
+
+    emailjs.sendForm(
+        "service_hvgzoqu",
+        "template_pmqxxod",
+        this
+    ).then(function () {
+
+        alert("Message sent successfully!");
+
+        document.getElementById("quote-form").reset();
+        grecaptcha.reset();
+
+    }, function (error) {
+
+        alert("Failed to send message");
+        console.log(error);
+
+    });
 
 });
 </script>
