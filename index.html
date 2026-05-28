@@ -585,10 +585,9 @@ z-index:1000;">
 💬 Chat with us
 </a>
    <script>
-(function () {
-    emailjs.init("sm7cvX2FL48dK9Kia");
-})();
-
+emailjs.init({
+    publicKey: "sm7cvX2FL48dK9Kia",
+});
 document.getElementById("quote-form")
 .addEventListener("submit", function (e) {
 
